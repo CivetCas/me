@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛玻璃效果</title>
+    <style>   
+     /*body设置背景颜色  */
+       body{
+        background:#0b0e2f;
+       }
+       /*四个需要渐变的圆相对body定位 */
+       .box1,.box2,.box3,.box4{
+        position: absolute;
+        /* 定位元素置于底层 */
+        z-index: -99;
+        /* 过度属性0.3秒完成 */
+        transition:all .3s ;    
+       }
+       .box1:hover,.box2:hover,.box3:hover,.box4:hover{
+        /* 鼠标划过的时候出现阴影 */
+       box-shadow: 1px 1px 5px #fff;
+       /* 鼠标划过元素向上位移12px，放大1.01倍 */
+       transform: translateY(-12px) scale(1.01); 
+       }
+        .box1{
+            width: 300px;
+            height: 300px;
+            top:-5px;
+            left:-10px;
+            /* 画圆 */
+            border-radius: 150px;
+            /* 背景渐变 */
+            background-image:linear-gradient(120deg,rgb(177, 232, 132),rgb(205, 140, 100),rgb(232, 63, 217));
+           
+        }
+        .box1:hover{
+            /* 鼠标悬停时背景渐变成另一个状态 ，其他box类似*/
+            background-image:linear-gradient(60deg,rgb(153, 218, 99),rgb(143, 105, 82),rgb(255, 0, 204));
+           
+        }
+        .box2{
+            top:400px;
+            left:530px;
+            width: 300px;
+            height: 300px;
+            border-radius: 150px; 
+            background-image:linear-gradient(120deg,rgb(53, 4, 64),rgb(243, 108, 24),rgb(0, 255, 38));
+        }
+        .box2:hover{
+            background-image:linear-gradient(60deg,rgb(153, 218, 99),rgb(230, 106, 29),rgb(178, 111, 164));
+        }
+        .box3{
+            top:100px;
+            right:20px;
+            width: 400px;
+            height: 400px;
+            border-radius: 200px;
+            background-image:linear-gradient(0deg,rgb(170, 20, 204),rgb(13, 174, 150),rgb(255, 0, 21));
+        }
+        .box3:hover{
+            background-image:linear-gradient(90deg,rgb(153, 218, 99),rgb(180, 230, 29),rgb(217, 149, 203));
+        }
+        .box4{
+            bottom:10px;
+            right:20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background-image:linear-gradient(120deg,rgb(176, 234, 27),rgb(72, 13, 174),rgb(255, 0, 21));
+        }
+        .box4:hover{
+            background-image:linear-gradient(0deg,rgb(153, 218, 99),rgb(228, 189, 164),rgb(111, 155, 178));
+        }
+
+        
+        .form{
+            width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            border:1px solid #ccc;
+            /* 内边距 */
+            padding:10px;
+            background-color:rgba(255,255,255,.2);
+            /* 背景模糊 */
+            /* filter:blur(5px); */
+            backdrop-filter: blur(15px);
+            color:#fff;
+            /* form里面的input居中，因为input是行内块元素，可以用text-align居中 */
+            text-align: center;
+            /* form自身居中，块元素需要用marign：auto；居中 */
+            margin:200px auto;
+            transition: all .5s;
+        }
+        .form:hover{
+            /* 鼠标划过form表单时候，向上位移-2px，出现阴影 */
+            transform: translateY(-2px);
+            box-shadow: 2px 4px 2px rgba(255,255,255,.2);
+        }
+        .form>input{
+            width: 260px;
+            height: 30px;
+            /* 去掉外轮廓 */
+            outline: none;
+            /* 去掉边框 */
+            border:none;
+            /* 背景透明（无背景） */
+            background-color: transparent;
+            /* 增加一个白色底部边框 */
+            border-bottom: 1px solid #fff;
+            /* 上面边距10px */
+            margin-top: 10px;
+            color:#fff;
+            /* 文本缩进10px */
+            text-indent: 10px;
+        }
+        .form   button{
+            width: 100px;
+            height: 30px;
+            /* 让button没有边框 */
+            border:none;
+            /* 按钮距离上面的元素20px */
+            margin-top: 20px;
+            border-radius: 10px;
+            color:#fff;
+            font-size: 16px;
+            /* 鼠标变成小手的形状 */
+            cursor: pointer;
+            background-image:linear-gradient(rgb(0, 255, 68),rgb(5, 94, 5));
+        }
+        /* input表单获得焦点时候的状态 */
+        .form input:focus{
+            /* 获取焦点的时候改变颜色和字体大小 */
+            color:rgb(194, 167, 167);
+            font-size: 20px;
+        }
+        </style>
+</head>
+<body>
+  <!-- 主表单内容 -->
+   <form class="form" action="#" method="post">
+    <h2>welcome</h2>
+    <input type="text" placeholder="name">
+    <input type="text" placeholder="phoneNumber">
+    <input type="text" placeholder="cardNumber">
+    <div>
+    <button>login</button>
+    </div>
+   </form>
+
+    <!-- 定位渐变的元素 -->
+   <div class="box1"></div>
+   <div class="box2"></div>
+   <div class="box3"></div>
+   <div class="box4"></div>
+</body>
+</html>
