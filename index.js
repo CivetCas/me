@@ -34,6 +34,5 @@ function myFunction() {
    function delet(){
     document.getElementById('myInput').value='';
     hidden();
-
    }
    
