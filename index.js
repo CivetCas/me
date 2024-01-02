@@ -30,4 +30,10 @@ function myFunction() {
    var myTable= document.getElementById("myTable"); myTable.style.display ="none";
    
    }
+
+   function delet(){
+    document.getElementById('myInput').value='';
+    hidden();
+
+   }
    
