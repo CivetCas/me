@@ -2,157 +2,1841 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>毛玻璃效果</title>
-    <style>   
-     /*body设置背景颜色  */
-       body{
-        background:#0b0e2f;
-       }
-       /*四个需要渐变的圆相对body定位 */
-       .box1,.box2,.box3,.box4{
-        position: absolute;
-        /* 定位元素置于底层 */
-        z-index: -99;
-        /* 过度属性0.3秒完成 */
-        transition:all .3s ;    
-       }
-       .box1:hover,.box2:hover,.box3:hover,.box4:hover{
-        /* 鼠标划过的时候出现阴影 */
-       box-shadow: 1px 1px 5px #fff;
-       /* 鼠标划过元素向上位移12px，放大1.01倍 */
-       transform: translateY(-12px) scale(1.01); 
-       }
-        .box1{
-            width: 300px;
-            height: 300px;
-            top:-5px;
-            left:-10px;
-            /* 画圆 */
-            border-radius: 150px;
-            /* 背景渐变 */
-            background-image:linear-gradient(120deg,rgb(177, 232, 132),rgb(205, 140, 100),rgb(232, 63, 217));
-           
-        }
-        .box1:hover{
-            /* 鼠标悬停时背景渐变成另一个状态 ，其他box类似*/
-            background-image:linear-gradient(60deg,rgb(153, 218, 99),rgb(143, 105, 82),rgb(255, 0, 204));
-           
-        }
-        .box2{
-            top:400px;
-            left:530px;
-            width: 300px;
-            height: 300px;
-            border-radius: 150px; 
-            background-image:linear-gradient(120deg,rgb(53, 4, 64),rgb(243, 108, 24),rgb(0, 255, 38));
-        }
-        .box2:hover{
-            background-image:linear-gradient(60deg,rgb(153, 218, 99),rgb(230, 106, 29),rgb(178, 111, 164));
-        }
-        .box3{
-            top:100px;
-            right:20px;
-            width: 400px;
-            height: 400px;
-            border-radius: 200px;
-            background-image:linear-gradient(0deg,rgb(170, 20, 204),rgb(13, 174, 150),rgb(255, 0, 21));
-        }
-        .box3:hover{
-            background-image:linear-gradient(90deg,rgb(153, 218, 99),rgb(180, 230, 29),rgb(217, 149, 203));
-        }
-        .box4{
-            bottom:10px;
-            right:20px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50px;
-            background-image:linear-gradient(120deg,rgb(176, 234, 27),rgb(72, 13, 174),rgb(255, 0, 21));
-        }
-        .box4:hover{
-            background-image:linear-gradient(0deg,rgb(153, 218, 99),rgb(228, 189, 164),rgb(111, 155, 178));
-        }
-
-        
-        .form{
-            width: 400px;
-            height: 300px;
-            border-radius: 20px;
-            border:1px solid #ccc;
-            /* 内边距 */
-            padding:10px;
-            background-color:rgba(255,255,255,.2);
-            /* 背景模糊 */
-            /* filter:blur(5px); */
-            backdrop-filter: blur(15px);
-            color:#fff;
-            /* form里面的input居中，因为input是行内块元素，可以用text-align居中 */
-            text-align: center;
-            /* form自身居中，块元素需要用marign：auto；居中 */
-            margin:200px auto;
-            transition: all .5s;
-        }
-        .form:hover{
-            /* 鼠标划过form表单时候，向上位移-2px，出现阴影 */
-            transform: translateY(-2px);
-            box-shadow: 2px 4px 2px rgba(255,255,255,.2);
-        }
-        .form>input{
-            width: 260px;
-            height: 30px;
-            /* 去掉外轮廓 */
-            outline: none;
-            /* 去掉边框 */
-            border:none;
-            /* 背景透明（无背景） */
-            background-color: transparent;
-            /* 增加一个白色底部边框 */
-            border-bottom: 1px solid #fff;
-            /* 上面边距10px */
-            margin-top: 10px;
-            color:#fff;
-            /* 文本缩进10px */
-            text-indent: 10px;
-        }
-        .form   button{
-            width: 100px;
-            height: 30px;
-            /* 让button没有边框 */
-            border:none;
-            /* 按钮距离上面的元素20px */
-            margin-top: 20px;
-            border-radius: 10px;
-            color:#fff;
-            font-size: 16px;
-            /* 鼠标变成小手的形状 */
-            cursor: pointer;
-            background-image:linear-gradient(rgb(0, 255, 68),rgb(5, 94, 5));
-        }
-        /* input表单获得焦点时候的状态 */
-        .form input:focus{
-            /* 获取焦点的时候改变颜色和字体大小 */
-            color:rgb(194, 167, 167);
-            font-size: 20px;
-        }
-        </style>
+    <title>Document</title>
 </head>
 <body>
-  <!-- 主表单内容 -->
-   <form class="form" action="#" method="post">
-    <h2>welcome</h2>
-    <input type="text" placeholder="name">
-    <input type="text" placeholder="phoneNumber">
-    <input type="text" placeholder="cardNumber">
-    <div>
-    <button>login</button>
-    </div>
-   </form>
+    <script src="index.js">
+        function myFunction() {
+    // 声明变量
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // 循环表格每一行，查找匹配项
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      } 
+    }
+  }
 
-    <!-- 定位渐变的元素 -->
-   <div class="box1"></div>
-   <div class="box2"></div>
-   <div class="box3"></div>
-   <div class="box4"></div>
+    </script>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索...">
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">题目</th>
+    <th style="width:40%;">答案</th>
+  </tr>
+  <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>离散制造业主要通过对原材料物理形状改变、______、使其成为产品，从而增值。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>组装</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>汽车制造包括冲压，焊装，涂装，（   ）四大工艺流程。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>总装  </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>入库中转台配置的产品规格视觉检测装置对工装板上盛放零件的V形槽拍照确认，并将空位的相关信息发送至_____。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>总控系统</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>系统支持多个生产计划同时分解及排产，操作方式为同时分解两个及以上的生产计划，待系统自动分解完毕，单击页面上的_______按钮，系统将自动按照规则填写排产顺序号。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>自动排产</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MESA还提出MES应具有详细生产计划、_____、文档管理、物料管理、绩效管理、秩序管理、维护管理、生产过程管理、质量管理、数据采集、产品跟踪和追溯。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>资源管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>JIT的含义是______。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>准时制生产</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>_____生产排产优化的目标是，即生产能力达到最高和生产成本降到最低</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>追求最高的生产效益</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产数据显示及监控包含设备 ________、现场质量监控、故障报警、生产报表等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>状态监控</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>毛坯入库后，MES发送相关信息给RFID系统，RFID系统将产品最新信息写入工装板上的芯片中，便于人员在中控室随时查看产品、工装板、仓库等相关信息，实现可视化、________生产管理，同时也有利于产品质量追溯。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>智能化</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>近年来，MES已经在生产排产、订单执行、自动叫料、______、防止装配错误、产品状态跟踪等环节实现了广泛的应用，使得制造企业能够在客户订单驱动下进行快速、高质量、低成本的生产。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>质量追溯</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>通常来说____________主要是为了保证生产过程中产品的质量而设立，生产部门中会有一个质量小组，专门负责各车间的质量检测、评估和制定质量标准，同时它也属于企业质量管理的一部分。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>质量管理系统</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES需求提出过程需要将生产部门、物流部门、_______等相关人员纳入讨论组中，甚至还需要将流程或者生产模式上报给企业管理层，以做出最终正确的决定。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>质量部门</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产部门的制造BOM是根据__________要求完善的，包括加工零件和按工艺要求制作的毛坯、模具、卡具等工艺清单。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造装配</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES是指（   ）。    </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造执行系统</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES的中文简称___________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造执行系统</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在各个业务环节中，BOM的表现形式也不同，主要表现形式包括设计BOM和________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造BOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ERP使用的BOM，被称为（  ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造BOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>BOM的使用贯穿了企业的多个部门，如计划、设计、制造、财会等部门。在各个业务环节中，BOM的表现形式也不同，主要的表现形式包括设计BOM和________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造BOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>_________是制造企业最为核心的数据，各个业务环节、各个部门都会用到它。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造BOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目实施范围文档在MES项目实施中占有非常重要的地位，是MES项目实施合同双方基于项目业务需求调研而做出的对采购技术协议的修订或者细化，也是整个MES项目实施的___________。通常该文档需要甲乙双方的管理人员签字确认，具有一定的法律效力。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>指导性文档</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES系统中零件或原材料追溯的形式有哪些？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>直接追溯、间接追溯、实物追溯。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>零件或原材料追溯包含以下3种形式_______、间接追溯和实物追溯。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>直接追溯</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES承担了零件追溯的工作，信息通过多种方式进入系统并在系统中进行记录。信息录入有以下3种方式___________、实时消息获取、追溯文件传递。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>直接扫描</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>执行管理的目的是什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>执行管理的目的是基于排产、订单及作业标准，管理和优化生产过程。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES系统是一套面向制造企业车间_________层的生产信息化管理系统。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>执行</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>每个站点具备的功能及简要的操作流程包括(    )。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>站点方案列表</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>风险项目可以定义为确实可以引起项目任务延期、项目失败，或者_________等后果的任务或事件。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>增加成本</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>成本控制的思路为将_________与实际花费进行对比，偏差控制在10％以内，则可以认为而目成本控制完成目标。10％是企业定义的标准，不同的企业有所不同。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>预算</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>人员职责定义需要定义项目组中的角色，定义每个角色的工作职责，工作职责按工作_________进行排列。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>优先级</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在设计MES过程中，应基于______和企业______的实际情况设计MES。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>用户需求/现有生产线</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对于用户需求，需要消除产品标准功能和_________之间的差距。对于不能满足的项目，需要详细说明替代方案，或者定制开发方案。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>用户需求</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>明确维护职责可分为（   ）。                  </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>拥有者、执行者、支持者、参与者</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>失效模式和___________是一种用来确定潜在失效模式及其原因的分析方法。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>影响分析</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES______情况处理是系统实施和维护阶段的经验总结，也是MES项目实施方以往经验的总结。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>异常</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产跟踪及控制须确保各个合拼站点的零件具有__________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>一致性</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES法中，安全风险等级分为一级、二级、三级、四级、五级；其中___级为最高级。 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>一级</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>为了研发出高效的MES恰当的定义软件功能、物理模型、____________是必要的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>业务流程</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>追溯主要是指事后质量信息的查询和___________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>验证</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES中的产品的基础数据来源于____________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>研发</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在数据采集过程中，对于人工输入的数据，尽量采用扫描和提供______选择的方式，通过增加人工校验或审核环节，确保数据没有被更改。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>选项</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>中心孔研磨机启动加工程序，对零件两端的中心孔进行精磨，以满足后续磨床对零件表面进行精磨的中心孔尺寸、______、位置公差等的要求。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>形状</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>中心孔研磨机启动加工程序，对零件两端的中心孔进行精磨，满足后续磨床对零件表面进行精磨的中心孔尺寸、________、位置等的要求</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>形状</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MESA将MES定义为：能通过_______，对从订单下达到产品完成的整个生产过程进行优化管理。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>信息传递</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>C-MES不应只是应用管理系统和现场自动化设备之间的桥梁，还应是现场生产数据和________的平台。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>信息传递</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ISA-SP95的3层架构模型包括____________、MOS或MES及自动化设备层。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>协同管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>库存绩效分析内容主要是库存的____________和库存的资源利用率。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>效率</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>下列不属于流程制造行业的特点是(    )。  </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>小批量</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>(    )是应用合适的工具对项目范围、计划、风险等进行管理和控制的过程。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目实施过程管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>________组织架构并没有标准，定义适合企业或者MES项且实施实际情况的组织架构，促使项目实施成功才是最终目的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目实施</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目实施通常来说分为4个步骤，即项目准备、项目定义、系统实施及_______。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目交付</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>_________不仅包括项目完结后最后的交付与验收，同时也包括项目实施过程中阶段性的交付，阶段性的交付主要针对合同的阶段性付款而进行。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目交付</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>(    )定义了企业的需求，以及MES功能的详细描述，同时也包括各种接口等，主要描述了MES项目实施后所展现的最终样式。    </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目范围</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目实施的步骤分为项目准备、______、系统实施以及项目交付4个过程。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目定义</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目实施计划可分为两个层级，面对不同的人员。第一个层级为项目关键时间节点计划，第二个层级为________________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>详细项目实施计划</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>IT基础架构图标识了服务器、交换机、________的交互方式，同时也应该明确相关职责。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>现场设备</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料管理中，FIFO机制是指________管理机制</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>先进先出</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>___________描述了系统实施之后的效果，主要是对系统的主要功能和流程及输入、输出等进行描述。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>系统实施蓝图</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>____________是指通过在系统上线正式运行之后，跟踪检查一定量的正常生产的产品来确认系统是否能够实现客户要求的功能及系统是否稳定。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>系统功能验证</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>转储单适用于物料出库、物料入库、______ 3种情况</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料转储</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>狭义上的BOM是指（   ）。 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料清单</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>狭义上的BOM是指(    ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料清单</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>________是物料拉动的基础数据</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料落点</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料拉动含义及流程?</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料拉动是指线边物料根据实际生产情况进行扣减，达到安全库存的数量时，自动发送叫料需求到物流配送区进行补料的过程。物料拉动的流程有物料落点管理、触发点管理、叫料需求管理、物料需求的执行与关闭。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料叫料方式是指如何将线边的需求或者生产计划传递给物料配送部门，从而让物料配送人员知晓线边物料的需求信息。物料叫料方式有以下几种：____________、空箱拉料法 以及安灯拉料法 、 排序配送法 、物料篮。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料看板</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>一般来说项目交付关键节点有几个（   ）。    </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>五个</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>问题项目的定义是什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>问题项目是指已经对项目造成一定影响的任务或事件，并且到创建时间为止，已经超过任务计划完成的时间或者没有任何解决方案。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES 项目中遇到的问题需要有3个层级的管理，包含开放项目、风险项目和（   ），3个层级为递进关系。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>问题项目</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>_________是指已经对项目造成一定影响的任务或事件，并且到创建时间为止，已经超过任务计划完成的时间或者没有任何解决方案。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>问题项目</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>工厂维护系统主要对设备出现问题之后的管理流程和___________进行管理。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>维修记录</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（   ）包括维护流程的检查和优化、维护活动和生产计划的协调，同时也包括生产排查过程中需要考虑的设备宕机、产品变更等特殊情况。 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>维护精细排程</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>下列哪个不属于冲压生产流程的大环节 (    )。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>涂装表面</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>随着工业化技术的进步，MES 数据采集可以使用的终端设备有很多，其中有传感器、数控加工机床、设备脉冲信号、工业 PLC、产品上或零件上的(   )和手持式扫描枪等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>条码</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>打印机和 _______是进行现场数据采集的最基本方式。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>条码</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>质量精细排程是什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>它主要指生产过程中或者之后的质量监测计划，包括测试系统有效性、人员有效性和检验准备计划、评估计划。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>信息孤岛使企业内部的信息在____产生断裂，严重制约了企业内部各种系统之间的协调运作，削减了信息化的整体作用。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>水平方向上</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>PLC是一种__________操作电子系统，专为在工业环境下应用而设计。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数字运算</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>详细描述系统定制开发部分的技术方案，包括功能说明、_________、测试方案等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数据结构</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>流程制造业和离散制造业对MES要求的区别对ERP的要求、作业计划调度、________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数据采集</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>_______是MES运行的基础，MES运行离不开现场实时数据。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数据采集</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>( )是质量管理活动的基础。在质量管理过程中，需要有目的地收集数据，并对其进行整理分析，从中及时发现质量管理，确保产品质量。   </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数据采集</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>(    )是MES运行的基础，MES运行离不开现场实时数据。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数据采集</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产计划可以理解为从上游系统传输的或者______的生产计划信息。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>手动输入</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>手持终端一般链接什么网络，具有什么特点?</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>手持终端一般连接无线网络，具有灵活移动，使用方便，即时录入等特点。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>零件原材料追溯包含直接追溯、间接追溯和_________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>实物追溯</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产执行是指在计划部门进行排产以后，生产部门将__________生产出来的过程。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>实物产品</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>分析项目可能存在的风险，除了分析常见风险以外，还要基于充分的调研，列出项目可能遇到的_____风险，并提出解决方案。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>实际</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产计划是依据______来进行安排的，越接近生产日期或者要求到货日，生产计划就越细化。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>时间轴</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>OEE=_____*性能开动率*合格品率。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>时间开动率</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（    ）主要包括生产过程中涉及的资源，例如设备、工具、工人（包括工人所具备的技能等）、物料和能源等。    </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产资源管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>资源管理是MES的基础功能模块，资源包括____________、质量资源，管理是指构建资源的相关信息，包括资源的基本信息、配置信息以及容量信息。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产资源</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产订单下达是将已经完成排产的生产订单，按照顺序和已经配置好的生产要求下达到生产线的开始工位，生产线的设备或者工人根据生产订单信息判断生产的产品型号和数量，该过程也叫__________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产指示 </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>_________是指在计划部门进行排产以后，生产部门将实物产品生产出来的过程。在系统层面，生产执行包含、生产订单的下达、生产指示、数据采集、生产跟踪及控制等管理过程，确保产品能以标准的品质按照工艺流程进行生产。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产执行</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产计划和生产排产是两个比较重要的概念，生产计划是确定一段时间内，每天生产产品的数量，而生产排产则是确定具体产品的___________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产顺序</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在进行系统功能设计时，一定要充分考虑系统需完成的事项，不正确的是(&#160;  )。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产日历</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>_______对MES的影响是根本性的，包括计划的制订与发布、是否应用延迟策略、物流如何配合生产等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产模式</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在进行系统功能设计时，一定要充分考虑系统需完成的事项，即生产数据管理、生产计划与排产、订单管理、__________、物料抖动、刀具管理、设备维护管理、设备监控管理、设备监控报表、安灯系统、系统监控电子看板及库存管理等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产控制</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>流程制造业和离散制造业对ERP的不同需求，主要表现在生产模式方面、______、成本核算方式方面。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产计划方面</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产数据显示及监控包含设备状态监控、现场质量监控、故障报警、_________等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产报表</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>什么是设计BOM？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设计部门的设计BOM是产品的总体信息表，其常见的文本表现形式包括产品明细表，图样目录，材料定额明细表。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>PDM生成的BOM被称______BOM。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设计BOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ERP使用的BOM，称为制造BOM。PDM生成的BOM，称为__________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设计BOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>以下哪项不属于MES基础数据（  ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备使用</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>站点客户端的信息不包括（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备故障率 </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（   ）是设备管理的基础性工作，它为生产经背单位设备安全管理提供信息、资料和数据。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备档案管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产调度，它主要通过安排与协调现场生产设备和____________来控制生产过程。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>人员</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目成本管理中，以下不包含人员成本的是（  ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>人工成本</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>下列哪一项不属于质量检查主数据（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>缺陷报告</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在合格证打印系统功能列表中以下哪个不是其接口模块功能（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>企业运营商接口</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ERP的含义是_______。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>企业经营管理系统</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在制造业信息化的早期阶段，{企业经营管理的信息化}和生产设备的自动化作为两个独立的分支各自发展着。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>企业经营管理的信息化</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MESA对MES的定义是什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>能通过信息传递，对从订单下达到产品完成的整个生产过程进行优化管理。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES的标准体系架构可从外部和____________两个视角进行描述。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>内部</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>系统验证跟踪中代表产品通过该站点时无异常，没有造成现场停线，同时系统中的过点正常是什么颜色（   ）。                      </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>绿色</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造业分为离散制造业和___________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>流程制造业</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>自动化设备层又分3个类型包括____________、批次生产和离散制造。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>流程制造</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>零件追溯信息查询包含：成品SN、产品编号、______以及产品下线日期。         </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>零件追溯码</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>有两类关于追溯的信息必须要在MES中记录，一个是_______、另一个是扭矩结果追溯。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>零件追溯</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>防错系统主要包括零件错装、螺栓漏打错打、捡料防错、（    ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>零件上线防错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>防错功能主要包含以下几个方面_______、螺栓漏打错打、捡料防错、零件上线防错。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>零件错装</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>流程制造行业与离散制造行业的工艺流程中存在哪些差异？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>离散制造行业的特点是多品种和小批量。流程制造行业的特点是品种固定、批量大、生产设备投资高。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>总装的上线物流管理主要有推式和_____两种模式。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>拉式</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>下列不属于资源管理的是(     )。  </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>库存执行管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>库存资源主要指库存相关的物料及物料转移相关的资源，包括、容器、物料消耗、工人（技能、证书、认证等）、物料、能源、__________、库存能力及安全库存等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>库存水平</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES的物流在该模型中包含两部分，一个是物料和能源控制,另一个是____________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>库存管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目中遇到的问题需要有3个层级的管理，包含________、风险项目、问题项目三个层级为递进关系。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>开放项目</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES的接口包含两部分内容，一部分是接口所用到的通信协议和技术方案，另一部分是______的定义。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>接口数据</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>不符合设备检修结束后安全要求的选项是:(    )  。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>检修设备立即投入生产</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>质量检验跟踪其主要功能是对___________和检验设备的使用信息进行处理，生成检测报表。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>检测数据</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物流配送区域路线图会标识物流配货或者_________区域，区域的位置、大小的变更都会对项目范围和成本产生影响。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>捡料</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>焊接车间分线和主线之间通过直接衔接、________两种模式衔接。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>间接衔接</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES在零件追溯过程中，信息录入方式不包含（  ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>间接扫描</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数据采集包括数据获取、____________和管理等一系列动作。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>计算</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产计划级排产包括的功能有：ERP集成接口配置、生产计划管理、______、订单生成及下达。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>计划分解</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES成为企业实现生产现场管理的集成系统，故又称为____________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>集成MES</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>刀具管理只应用于_______，从PLC中收集相关数据进行计算，提前预警换刀，及时跟踪刀具的使用状态和使用记录。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>机械加工生产线</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>流程制造业主要通过对原料进行______、分离、分碎等物理或化学方式的处理，使原料增值。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>混合</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备管理过程中，要求设备操作人员做到“四会”，其中不包括（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>会改造</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>库存管理中仓储类型不包括以下哪种类型（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>合格品库</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（   ）是整车厂四大车间中自动化程度较高的车间。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>焊装车间</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在汽车生产企业中，（   ）工艺决定了白车身的品质。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>焊装 </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>整车厂四大车间中自动化程度较高的车间是（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>焊接车间</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>以下不属于零件追溯信息查询条件的是（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>过程质量描述</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES系统的质量管理功能包括:质量标准管理、过程质量管理、检测数据采集、质量统计分析、质量指标考核等功能。MES质量的( )作为MES的核心功能，由统计分析过程负责生产过程的一切管理。                                </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>过程质量管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES的质量管理通常为_____，是指发现在制造过程中产生的质量问题和隐患，并记录下关键的过程数据。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>过程质量</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ERP作为经营管理系统，DCS作为____________，而MES则作为制造执行系统。 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>过程控制系统</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>AMR将MES定义为“位于上层计划管理系统与底层工业控制系统之间的、面向车间的{管理信息}系统”。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>管理信息</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES功能配置测试通过以后，就需要引入项目变更_________，通过这个企业可以很好地管理在实施过程中发生的一些意外。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>管理流程</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>控制计划主要是指提供过程监视和控制方法，从而控制产品生产过程中的各种特性，包括__________、特殊特性SC及其他普通特性。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>关键特性CC</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目实施业务需求分析中项目实施计划，(   )也可以作为付款条件的一部分。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>关键里程碑计划</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产数据显示及监控包含设备状态监控、现场管理、(    )、生产报表。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>故障报警</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目经理在项目开始初期，应准确估算该项目产生的成本，除了软硬件等固定费用以外，还应测算项目在整个生命周期中的人员成本，人员成本应包含：项目团队成员人力成本、______人力成本、差旅成本3方面。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>供应商</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>下面不是常用的JIT叫料模式的是（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>供应商</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>系统验证跟踪是保证系统能够正常、稳定运行的重要手段，也是项目验收的必要条件。通常验证过程需要经过功能验证和数据验证两个部分，_________验证针对系统功能，而数据验证针对设备监控和报表的正确性。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>功能</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目实施范围文档通常也叫____________（Scope Of Work,SOW）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>工作范围文档</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造BOM常见的文本表现形式包括什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>工艺路线表，关键工序汇总表，重要件或关键明细表，自制件明确表，通用件明细表，通用专用工装明细表，设备明细表。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>工艺信息以列表的形式展现，在页面上端的下拉列表中可选择与该生产线关联的产品编码，不同编码显示不同________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>工艺路线</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产品在装配采集时，MES系统通过(    )来检验装配的物料和数量是否符合工艺要求。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>工序BOM </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产线管理和_____是保障生产线能够正常运作的必要条件。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>工厂维护</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目变更管理流程就是为了规范各种随意__________的行为，减少对系统实施的冲击和干扰。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>更改系统</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>跟踪控制是什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>跟踪控制主要是指从生产过程中比较重要的站点获取产品或物料的关键状态，这个信息将成为系统报表的重要组成部分。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目实施步骤项目交付中(    )标志着项目实施结束。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>付款</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>风险项目的定义是什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>风险项目可以定义为确实可以引起项目任务延期、项目失败，或者增加成本等后果的任务或事件。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目实施过程管理就是应用合适的工具的。对项目范围、计划、_______等进行管理和控制的过程。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>风险</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>安灯系统起源于什么公司（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>丰田汽车公司</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES站点布局图包括生产控制站点、零件追溯站点、质量检测站点、_________、异常呼叫站点、跟踪站点等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>防错站点</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目实施计划可分为(    )个层级。     </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>二</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>离散型制造行业的特点是（    ）  。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>多品种和小批量</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>下列属于离散制造行业的特点的是（       ）。 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>多品种</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>追溯管理是质量管理中比较重要的一环。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>质量绩效分析。分析质量检测的结果以改善产品质量。这是一个持续不断的过程，通过分析测量误差、测量时间、测量效率和资源利用的情况，不断改进质量检测的效率和精确度。利用大数据分析，可以快速找到质量缺陷产生的根源及改进的方向。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造业主要分为流程制造行业和离散制造行业两大类。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造BOM是制造企业最为核心的数据，各个业务环节、各个部门都会用到它。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在制造业信息化的早期阶段，企业经营管理的信息化与生产设备的自动化作为两个独立的分支各自发展着。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在现在的汽车企业，MES已经取代了手工物料看板的信息收集工作。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在生产全过程中，对各生产过程的质量控制是由PQC来执行的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在企业信息化系统软件中，BOM发挥着关键的纽带作用。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在ERP的发展历程中，所经历的各阶段具有向上兼容性，即最后一阶段是对于前一阶段的功能扩展和提升。 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>一般来说项目交付关键节点有五个。    </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>详细项目实施计划又称为WBS。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>详细生产计划（详细产品计划及排产)的含义是生产顺序和工时平衡需要考虑单个生产线或整个生产线的产能及资源利用率。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料拉动是指线边物料根据实际生产情况进行扣减，达到安全库存的数量时，自动发送叫料需求到物流配送区进行补料的过程。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料管理中，FIFO机制是指先进先出管理机制</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料管理(物料管理及配送)的含义是管理现场生产所需的物料及半成品的现场配送，保证生产顺利进行。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料的管理中，管控方式通常有批量管控和单体管控两种。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>无论是离散制造行业还是流程制造行业，质量检验和管理都相当重要，但在MES中，二者在质量检验和管理方式上有所区别。在离数制造行业中，对单件小批生产产品，需要检验每个零件、每道工序的加工质量:对批量生产产品，一般采用首检、抽检的方式，与统计过程中的控制分析相结合。在流程制造行业中，一般会对生产批&#160;号产品进行各工序上的抽样检验。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>所有在线车辆都是相似或者相同的，仅靠人工目视是无法分辨的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数据采集是MES运行的基础，MES运行离不开现场实时数据。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>实施MES可先从基础的、基本的模块做起，再实施扩充的、增强的、高级的模块。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>实施MES管理系统项目时会存在以下误区即包括对MES系统管理系统有过高或不实际的期望、贪大求全并一步到位的思想、过分注重技术问题、忽略管理模式和控制模式的转变等其他的误区。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产执行管理。它是指基于产品的定义和制造作业的指导，推进实际的生产流程和任务执行，同时也包含按照工艺的要求正确地执行下一步生产。 在生产过程中，企业需要收集物料的消耗和生产时间等信息，从而在系统层面知晓现场的生产状况。   </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产模式对MES的影响是根本性的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产计划和生产排产是两个比较重要的概念。生产计划是确定一段时间内，每天生产产品的数量:面生产排产则是确定具体产品的生产顺序，生产排产可以是基于批次的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设计BOM对应的电子视图往往是产品结构树的形式，树上每个节点都关联著各类属性或图形信息。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备日常维护为设备的日常维护，通常指周期性的设备点检及维护工作。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备管理模块可有基本信息维护页面、设备故障维护页面和设备故障邮件提醒页面。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>离散制造行业的生产设备不是按照产晶而是按照工艺进行布置的。一般有多台可以进行同一种加工工艺的机床。-般单台设备的故障不会对整个产品的工艺过程产生严重的影响，重点是要管理好关键设备、瓶颈设备。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>工业现场用的触摸屏一般称为人机交互接口。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>根据企业需求，MES的系统功能可以非常复杂。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>打印机和条码是进行现场数据采集的最基本方式，也是最早采用的一种方式。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产品跟踪和追溯的含义是跟踪和记录与产品有关的信息，对零件、过程及事件进行记录并保存。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>仓储类型包括成品库，半成品库，零件及原材料库，不合格品库。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>安灯系统软件由两部分组成，即服务端软件和客户端软件。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>RFID是已经被实践过、非常稳定并且已经被大规模使用的技术。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>RFID技术又称为无线射频识别，是一种通信技术，可通过无线电信号识别特定目标并读写相关数据，而无须在识别系统与特定目标之间建立机械或光学接触。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>QMS是指质量管理系统。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>PLC是一种数字运算操作电子系统，转为在工业环境下应用而设计。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES与PLC之间是用工业以太网进行连接的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目实施步骤分为：项目准备、项目定义、系统实施及项目交付四个步骤。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES管理系统项目实施的五个步骤即项目准备阶段、方案设计阶段、配置实现阶段、系统试运行阶段、全线推广阶段。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MESA将MES定义为：能通过信息传递，对从订单下达到产品完成的整个生产过程进行优化的管理。 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>KPI是指关键绩效指标。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ERP使用的BOM,称为制造BOM。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ERP除了从PDM中获取产品结构信息外，还需要从计算机辅助工艺设计《ComputerAided Process Planning，CAPP )中获取一些简单的工艺信息，包括毛坯和材料定额工艺路线的工序、设备（ERP中统称为工作中心)、标准时间定额，使用的主要工具和工艺装备的名称和代码等。ERP获取这些信息主要是为了编制作业计划。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在MES系统中，订单在开始之前会设置一定数量的_____订单，当变更发生时，在系统中只能变更没有冻结的那部分，提前准备的物料就可以应用到已经冻结的那部分排产订单。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>冻结</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备维护过程中，要求设备操作人员要做到“润滑五定”，它们是：（   ） 。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>定点、定时、定质、定量、定人</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产部门通常按照 计划部门的指令，定期从生产订单库中取出生产订单，并决定______,这一过程称排产。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>订单顺序</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>执行管理的目的是基于排产、____________及作业标准,管理和优化生产流程。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>订单</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>调度管理的主要功能是什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>调度管理的主要功能为协调和指导现场生产活动，确保各个生产活动符合排程的要求。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目实施结构，各层级为( )                 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>第一层:企业执行委员会，第二层:项目执行委员会，第三层:IT实施管理团队，第四层:IT项目实施团队。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>JPH(每小时的实际产量)=实际产量/ （    ） ，时间单位为小时。      </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>当前时间-开班时间-小时时长 </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料的管理中，管控方式通常有批管控和（   )管控两种。&#160;</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>单体</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ERP从PDM中获取的信息包括什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>答案：物料主文件，产品数据，零件族，产品配置，设计变更通知。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>质量检测跟踪。它是指汇总和评估生产相关资源的利用情况，这些资源包括产品本身、生产设备、物料消耗、工作绩效和成本等。同时生产跟踪还把产品的关键状态信息反馈给精细排产，从而更新产品或订单的状态 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在生产过程中，MES与PLC通信主要有定期抓取和PLC基于条件触发请求两种方式。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>月末进行一次设备维护，平时不需要维护。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>一个完整的MES必须具备十一个标准功能模块。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目风险控制可分4个层次。         </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>维护绩效分析。分析内容主要是库存的效率和库存的资源利用率。数据来源主要包括物料质量缺陷、配送的准时性、库存损失、物料移库次数、仓储设备及工作班次等。分析结果可以为物流或者仓储的业务流程的改进及库存策略的制定等提供决策支持。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>数据存储单元是HMI的核心单元。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产计划可以理解为从下游系统传输的或者手动输入的生产计划信息。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产跟踪其主要功能是对检谢数据和检验设备的使用信息进行处理，生成检测报表。这个报表可以实时生成，也可以按需要生成，例如在一个批次生产完之后，系统中生成关于这个批次所有产品的检测报告。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备监控报表不单单只提供单个设备的报表，可以提供多个设备的报表。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备发生的故障,用户单击该菜单时，系统不显示当前用户创建或执行的设备故障通知单。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>离散制造行业的特点是多品种和大批量。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>离散制造行业的产品结构为树状结构，最终产品或者部件由一定的零件组成，而这种树状结构一般用EBOM表示。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>拉式物流模式主要应用于场内的标准件。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>间接追溯是追溯的最高级别。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>合格证系统不属于MES的一部分。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>对于间接衔接，系统必须严格控制其投料的顺序</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>订单管理页面默认只显示已经下达并且还未关闭的订单，已经关闭的订单不可以通过更改查询条件进行查询。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>打印机是现场数据采集的最基本方式。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产线管理和工厂维护不是保障生产线能够正常运作的必要条件。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产品在装配采集时，MES系统通过工位BOM来检验装配的物料和数量是否符合工艺要求。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES中产品的基础数据来源于研发。对于离散制造行业来说，表现为产品配方；而对于流程制造行业来说，表现为产品BOM。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目实施步骤项目交付中项目合同签字标志着项目实施结束。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES的提出首先是从离散制造行业开始的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>Kitting配货区的信息由涂装起始点触发，由MES根据BOM展开后进行打印。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>JIT生产方式又称为推动式生产。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>错</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>信息断层造成的企业生产经营信息在_____断裂，成为阻碍企业的经营管理系统与车间的生产管理系统集成的根本原因。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>垂直方向上的</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>汽车制造企业包含（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>冲压、焊装、涂装、总装    </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>成品信息查询不包括（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>成品质量信息</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>钢条码的优点是(   )。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>成本较低、识别率高</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>一个标准的问题场景和解决方案，应包含_________、现场人员立刻采取的动作和备用方案，另外还需要提供IT部门负责人的联系方式等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>场景描述</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设备按照Asset进行划分,每个Asset对应对应一个设备或者一个工位，具体设置按照_____的具体需求而定。每个Assset应该有对应的属性，属性即为需要收集的数据。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产线监控</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设计部门的设计BOM是产品的总体信息表，其常见的文本表现形式包括________、图样目录、材料定额明细表。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产品明细表</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>PDM与ERP间共享的信息包括什么？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产品结构，零组件，工艺信息，原材料，设备，工装，组织结构。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>零件追溯信息查询包含四个查询条件：成品SN、________、零件追溯码、产品下线日期，查询条件除日期外还支持模糊查询。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产品编号</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>过程质量信息查询包括4个查询条件：成品SN、（   ）、过程质量描述、产品下线日期。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>产品编号</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在备料客户端登陆页面（单独的URL），用户除输入用户名、密码外，还需要选择____。    </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>仓位号</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>系统实施并且验证完成后，需要将业务部门和IT部门的相关人员组织起来，共同商议交付后的系统维护职责。维护职责有4个级别，即拥有者（Accountable)、执行者（Responsible)、支持者(Consultant）和_________（Informed)。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>参与者</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>以下哪项内容不属于MES管理范畴（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>采购管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产计划可以生成_______,但是不等于采购订单。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>采购订单</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES数据采集合法性的校验规则不包括（  ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>编号样式的校验</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产数据的利用和反馈最常用的方式有看板和（  ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>报表</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>进入21世纪，企业之间的主要竞争因素变为时间，在客户需要的时候按时、保质、_______地提供正确的产品成为企业核心竞争力的关键。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>保量</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>软硬件采购BOM应包含所有软件硬件的型号、_______、购买编号及一些特殊的说明，可以以列表的方式提供。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>版本号</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>详细项目实施计划又称为_________。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>WBS</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>详细项目实施计划又称为(    )。       </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>WBS</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>一个订单可以包含多个产品，但都属于同一个PN，按照要求，每个产品都应该有______。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>SN</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>订单和产品的关系。一个订单可以包括多个产品，但属于同一个PN，按照要求，每个产品都应该有（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>SN</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>_________技术，又称无线射频识别。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>RFID</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在生产全过程中，对各生产过程的质量控制是由(    ）来执行的。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>PQC </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>刀具管理只应用于机械加工生产线，从____中收集相关数据进行计算，提前预警换刀，及时跟踪刀具的使用状态和使用记录。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>PLC</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>设计物料清单的含义是（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>PBOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>简述设备使用率（OEE）的计算公式。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>OEE=时间开动率x性能开动率x合格品率</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>______________是指在MES运行过程中出现问题时进行应对,是系统维护阶段的重要文档，它定义了各种异常情况出现的场景描述及应对办法。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES异常情况处理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（   ）设计应基于用户需求和企业现有生产线的实际情况设计。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES </FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES解决方案应用框架从设计到应用模块均参照（    ）标准的要求。              </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ISA-95</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES中的企业经营管理系统是（   ）。 </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ERP</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>过程控制系统是指（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>DCS</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>生产数据管理包括生产线、产品维护、站点管理、PLC数据模块管理、_______、生产日历、设备管理等。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>BOM管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>离散制造行业的产品结构为树状结构，其最终产品或者部件由一定的零件组成，而这种树状结构一般用{BOM}的形式来表示。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>BOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>项目风险控制可分几个层次（   ）。         </FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>3个</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>HMI根据产品等级可选用8位、8位、______位处理器。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>32</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES承担了零件追溯的工作，信息通过多种方式进入系统并在系统中进行记录。信息录入有哪几种方式?</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1.直接扫描；2.实时消息获取；3.追溯文件传递</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES的标准功能模块有哪些</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1.详细生产计划。2.资源管理。3.文档管理。4.物料管理。5.绩效管理。6.秩序管理。7.维护管理。8.生产过程管理。9.质量管理。10.数据采集。11.产品跟踪和追溯。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>ISA-SP95 MES流程模型中的定义管理主要包括哪些方面?</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1.生产定义管理；2.质量定义管理；3.维护定义管理；库存定义管理</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES系统质量检查系统中，质量检查主数据包括哪些内容？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1.缺陷类型；2.缺陷位置；3.缺陷原因；4.采取措施；5.缺陷等级；6成本</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>物料配送管理主数据主要包括哪几个部分？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1.零件落点;2.物料信息;3.拉料方式;4.容器;5.库存仓位;6.配送方式;7.产品BOM</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES功能配置好后需要引入项目变更管理流程，变更单贯穿了整个流程，变更单一般包含哪些内容?</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1.基本信息2.详细变更内容3.变更原因4.变更的影响</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>安灯系统的分类有哪些？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1.操作安灯；2.质量安灯；3.物料安灯；4.电子看板安灯</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在生产过程中，MES与PLC通信主要有哪几种方式?</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1.MES定期抓取；2.基于条件触发请求；3.基于握手的数据交换</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>制造执行系统（MES）的核心功能是什么?</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1、人：员工管理，MES系统在实际生产中可帮助企业节约人力成本。2、机：设备作为企业生产重要工具，MES系统可对设备进行管控，实时掌控设备情况。3、料：实现工位物料错装、漏装等防错管理，做到不堆料、不缺料、不错料。4、法：实现生产标准工艺指示。5、环：实现质量管理闭环。6、测：对最终产品质量进行把控。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>一般来说项目交付关键节点有哪几个？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1）服务器安装配置完成。(2）系统配置测试完成。（3）产品试制阶段验证完成。（4）产品正式投产验证完成。（5）项目交付验收完成。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>在设备监控看板中性能为多少，良品率为下线产品合格率（   ）。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>1</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>简述项目风险控制第二层的主要内容。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（1）项目组周例会审阅；（2）风险需要评级； （3）周例会决定是否需要上报更高层级；（4）风险需要设置解决日期，到达日期后转变为问题。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目实施步骤中的系统实施步骤有哪些？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（1）软硬件采购；（2）IT基础设施准备；（3）系统功能开发；（4）系统安装及配置；（5）系统功能测试；（6）系统功能及数据验证；（7）用户培训；（8）系统上线。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES项目实施范围文档中业务分析的主要内容。</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（1）MES站点布局图；（2）站点方案列表；（3）站点建设职责划分；（4）软硬件采购BOM；（5）IT基础架构图；（6）物流配送区域路线图。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>MES系统的成本构成？</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>（1）MES前期规划成本；（2）MES本身的成本；（3）MES运行所需要的环境成本；（4）MES运行所需要的其他软件License成本；（5）MES项目实施成本；（6）MES  后期维护成本；（7）软件功能或者实施范围变更成本。</FONT></TD>
+    
+    </TR>
+    
+    <TR VALIGN=TOP>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000>下列哪个不是生产排程的主要考虑因素?</FONT></TD>
+    <TD BORDERCOLOR=#d0d7e5 ><FONT style=FONT-SIZE:11pt FACE="宋体" COLOR=#000000> 机台维护</FONT></TD>
+    
+    </TR>
+    </TBODY>
+    <TFOOT></TFOOT>
+</table>
 </body>
 </html>
+
